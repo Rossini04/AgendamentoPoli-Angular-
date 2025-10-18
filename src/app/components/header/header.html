@@ -1,0 +1,41 @@
+<header class="header-custom text-white p-3">
+  <div class="container py-2">
+    <div class="row align-items-center">
+      <div class="col-auto pr-0">
+        <img src="assets/Imgs/logo-ufsm.png" alt="Logo UFSM" style="height:90px;">
+      </div>
+      <div class="col text-left">
+        <h2 style="font-size:48px; margin-bottom:0; font-family:'Inter', Arial, Helvetica, sans-serif;">Politécnico</h2>
+        <small style="display:block; font-size:20px; font-family:'Inter', Arial, Helvetica, sans-serif;">
+          Colégio Politécnico da UFSM
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <hr class="linha">
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container px-0">
+      <a class="navbar-brand font-weight-bold" routerLink="/">Menu</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" routerLink="/contatos">Contatos</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/gestores">Gestores do Sítio</a></li>
+        </ul>
+      </div>
+
+      <form class="form-inline rounded-form" (ngSubmit)="onSearch()">
+        <div class="input-group">
+          <input class="form-control" type="search" placeholder="Buscar no sítio" [(ngModel)]="query" name="query">
+          <div class="input-group-append">
+            <button class="btn btn-transparent" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>

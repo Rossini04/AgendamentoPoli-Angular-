@@ -1,489 +1,39 @@
-<body>
-  <!-- Cabeçalho fora do container -->
-  <header class="header-custom text-white p-3">
-    <div class="container py-2">
-      <div class="row align-items-center">
-        <div class="col-auto pr-0">
-          <img src="Imgs/logo-ufsm.png" alt="Logo UFSM" style="width:px; height:90px;">
-        </div>
-        <div class="col text-left">
-          <h2 style="font-size:48px; margin-bottom:0; font-family:'Inter', Arial, Helvetica, sans-serif;">Politécnico
-          </h2>
-          <small
-            style="display:block; font-size:20px; margin-top:0; font-family:'Inter', Arial, Helvetica, sans-serif;">
-            Colégio Politécnico da UFSM
-          </small>
-        </div>
-      </div>
-    </div>
-    <hr class="linha">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container px-0">
-        <a class="navbar-brand font-weight-bold" href="#">Menu</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="#">Contatos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Gestores do Sitio</a></li>
-          </ul>
-        </div>
-        <form class="form-inline rounded-form">
-          <div class="input-group">
-            <input class="form-control" type="search" placeholder="Buscar no sítio">
-            <div class="input-group-append">
-              <button class="btn btn-transparent" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </nav>
-  </header>
-
-  <!--Se achar no site-->
-  <div class="container px-0 mt-2 mb-4">
-    <div class="row">
-      <div class="col">
-        <p style="margin-bottom: 0;">
-          Você está aqui:
-          UFSM &gt;
-          <a href="#" style="color: blue; text-decoration: none;">Politécnico</a> &gt;
-          Agendamento e Salas
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container px-0">
-    <!-- Banner -->
-    <div class="banner"></div>
-    <!-- Conteúdo principal -->
-    <main class="my-5 text-center">
-
+<div class="row mb-4">
+  <div class="col-md-6 mb-3">
+    <div class="container my-4">
+      <!-- Linha principal de botões -->
       <div class="row mb-4">
+
+        <!-- Cadastro de Salas -->
         <div class="col-md-6 mb-3">
-          <button class="btn btn-outline-primary btn-lg btn-block" onclick="cadastroSalas()">+ Cadastro de Salas
+          <button class="btn btn-outline-primary btn-lg btn-block" (click)="abrirModal('cadastro')">
+            + Cadastro de Salas
           </button>
         </div>
 
-        <div class="modal fade" id="modalum" tabindex="-1" role="dialog" aria-labelledby="meumodallabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="meumodallabel">Cadastro de Salas</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <form>
-                <div class="modal-body">
-                  <div class="form-row mb-3">
-                    <div class="form-group col-md-4">
-                      <label for="bloco">Bloco</label>
-                      <select id="bloco" class="form-control" onchange="atualizarSalas()">
-                        <option selected disabled>Selecione</option>
-                        <option>Bloco A</option>
-                        <option>Bloco B</option>
-                        <option>Bloco C</option>
-                        <option>Bloco D</option>
-                        <option>Bloco E</option>
-                        <option>Bloco F</option>
-                        <option>Bloco G</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <label for="sala">Sala</label>
-                      <select id="sala" class="form-control">
-                        <option selected disabled>Selecione o bloco primeiro</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <label for="capacidade">Capacidade</label>
-                      <input type="number" class="form-control" id="capacidade" placeholder="Número de pessoas" min="0"
-                        max="30">
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <label for="tipo">Tipo</label>
-                    <select id="tipo" class="form-control">
-                      <option selected disabled>Selecione</option>
-                      <option>Laboratório</option>
-                      <option>Sala de aula</option>
-                    </select>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="cpfResponsavel">CPF do Responsável</label>
-                      <input type="text" class="form-control" id="cpfResponsavel" placeholder="000.000.000-00">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                      <label for="nomeResponsavel">Nome do Responsável</label>
-                      <input type="text" class="form-control" id="nomeResponsavel" placeholder="Nome completo">
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar cadastro</button>
-                  <button type="submit" class="btn btn-primary">Cadastrar sala</button>
-                </div>
-              </form>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Botão para abrir Agendamento -->
+        <!-- Agendamento -->
         <div class="col-md-6 mb-3">
-          <button class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#modalAgendamento" onclick="realizarAgendamento()">
+          <button class="btn btn-outline-success btn-lg btn-block" (click)="abrirModal('agendamento')">
             Realizar Agendamentos
           </button>
         </div>
-
-        <!-- Modal Agendamento de Salas -->
-        <div class="modal fade" id="modalAgendamento" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content custom-modal">
-
-              <!-- Cabeçalho -->
-              <div class="modal-header custom-header">
-                <h5 class="modal-title">AGENDAMENTO DE SALA</h5>
-                <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Fechar">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <!-- Formulário -->
-              <form>
-                <div class="modal-body">
-                  <div class="form-row mb-3">
-                    <div class="form-group col-md-4">
-                      <label class="form-label font-weight-bold">BLOCO</label>
-                      <select id="blocoAgendamento" class="form-control custom-input"
-                        onchange="atualizarSalas('Agendamento')">
-                        <option selected disabled></option>
-                        <option>Bloco A</option>
-                        <option>Bloco B</option>
-                        <option>Bloco C</option>
-                        <option>Bloco D</option>
-                        <option>Bloco E</option>
-                        <option>Bloco F</option>
-                        <option>Bloco G</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <label class="form-label font-weight-bold">SALA</label>
-                      <select id="salaAgendamento" class="form-control custom-input">
-                        <option selected disabled></option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <label class="form-label font-weight-bold">TIPO</label>
-                      <select id="tipoAgendamento" class="form-control custom-input">
-                        <option selected disabled></option>
-                        <option>Laboratório</option>
-                        <option>Sala de aula</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-row mb-3">
-                    <div class="form-group col-md-6">
-                      <label class="form-label font-weight-bold">DATA INICIAL</label>
-                      <input type="date" class="form-control custom-input" id="dataInicialAgendamento">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label class="form-label font-weight-bold">DATA FINAL</label>
-                      <input type="date" class="form-control custom-input" id="dataFinalAgendamento">
-                    </div>
-                  </div>
-
-                  <div class="form-row mb-3">
-                    <div class="form-group col-md-6">
-                      <label class="form-label font-weight-bold">DIA DA SEMANA</label>
-                      <select id="diaSemanaAgendamento" class="form-control custom-input">
-                        <option selected disabled></option>
-                        <option>Segunda-feira</option>
-                        <option>Terça-feira</option>
-                        <option>Quarta-feira</option>
-                        <option>Quinta-feira</option>
-                        <option>Sexta-feira</option>
-                        <option>Sábado</option>
-                        <option>Domingo</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                      <label class="form-label font-weight-bold">HORA INICIAL</label>
-                      <input type="time" class="form-control custom-input" id="horaInicialAgendamento">
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label class="form-label font-weight-bold">HORA FINAL</label>
-                      <input type="time" class="form-control custom-input" id="horaFinalAgendamento">
-                    </div>
-                  </div>
-
-                  <div class="form-row mb-3">
-                    <div class="form-group col-md-6">
-                      <label class="form-label font-weight-bold">CPF DO RESPONSÁVEL</label>
-                      <input type="text" class="form-control custom-input" id="cpfAgendamento" placeholder="">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label class="form-label font-weight-bold">NOME DO RESPONSÁVEL</label>
-                      <input type="text" class="form-control custom-input" id="nomeAgendamento" placeholder="">
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Rodapé -->
-                <div class="modal-footer justify-content-between">
-                  <button type="button" class="btn btn-link text-muted" data-dismiss="modal">Cancelar
-                    agendamento</button>
-                  <button type="submit" class="btn custom-btn">Agendar sala</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <!------------------------------------------------------------------------------------------------------------->
+      <!-- Consultas -->
       <div class="row mb-4">
         <div class="col-md-6 mb-3">
-          <button class="btn btn-outline-warning btn-lg btn-block" onclick="consultarCadastros()">🔍 Consultar
-            Cadastros</button>
-
-          <!-- Modal Visualizar Meus Agendamentos -->
-          <div class="modal fade" id="modaltres" tabindex="-1" role="dialog" aria-labelledby="modalLabelAgendamentos"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-
-                <div class="modal-header bg-primary text-white">
-                  <h5 class="modal-title" id="modalLabelAgendamentos">Consultar Cadastros
-                  </h5>
-                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-
-                <div class="modal-body">
-                  <!-- Filtros -->
-                  <div class="form-row mb-4">
-                    <div class="form-group col-md-3">
-                      <select class="form-control">
-                        <option selected>Responsáveis</option>
-                        <option value="">Cassal</option>
-                        <option value="">Henry</option>
-                        <option value="">Rosiclei</option>
-                        <option value="">Alan Turing</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <select id="bloco" class="form-control" onchange="atualizarSalas()">
-                        <option selected disabled>Selecione</option>
-                        <option>Bloco A</option>
-                        <option>Bloco B</option>
-                        <option>Bloco C</option>
-                        <option>Bloco D</option>
-                        <option>Bloco E</option>
-                        <option>Bloco F</option>
-                        <option>Bloco G</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-3">
-
-                      <select id="sala" class="form-control">
-                        <label for="sala">Sala</label>
-                        <option selected disabled>Selecione o bloco primeiro</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                      <select class="form-control">
-                        <option selected>Período</option>
-                        <option value="">Segunda</option>
-                        <option value="">Terça</option>
-                        <option value="">Quarta</option>
-                        <option value="">Quinta</option>
-                        <option value="">Sexta</option>
-                        <option value="">Sábado</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <!-- Cartões de Agendamento -->
-                  <div class="card mb-3">
-                    <div class="card-body d-flex">
-                      <div class="mr-3" style="width: 80px; height: 80px; background-color: #eee;"></div>
-                      <div>
-                        <h6 class="mb-1">SALA C4</h6>
-                        <p class="mb-1">TIPO: SALA DE AULA</p>
-                        <p class="mb-1">CAPACIDADE: 20</p>
-                        <p class="mb-1">BLOCO: C</p>
-                        <p class="text-muted small mb-2">CADASTRADA NO DIA 16/01/2023</p>
-                        <button class="btn btn-sm btn-primary mr-2">Editar cadastro</button>
-                        <button class="btn btn-sm btn-danger">Excluir cadastro</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-body d-flex">
-                      <div class="mr-3" style="width: 80px; height: 80px; background-color: #eee;"></div>
-                      <div>
-                        <h6 class="mb-1">SALA G15</h6>
-                        <p class="mb-1">TIPO: LABORATÓRIO</p>
-                        <p class="mb-1">CAPACIDADE: 25</p>
-                        <p class="mb-1">BLOCO: G</p>
-                        <p class="text-muted small mb-2">CADASTRADA NO DIA 06/07/2020</p>
-                        <button class="btn btn-sm btn-primary mr-2">Editar cadastro</button>
-                        <button class="btn btn-sm btn-danger">Excluir cadastro</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Paginação -->
-                  <nav class="d-flex justify-content-center">
-                    <ul class="pagination pagination-sm">
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    </ul>
-                  </nav>
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
+          <button class="btn btn-outline-warning btn-lg btn-block" (click)="abrirModal('consultarCadastros')">
+            🔍 Consultar Cadastros
+          </button>
         </div>
-
         <div class="col-md-6 mb-3">
-          <button class="btn btn-outline-info btn-lg btn-block" onclick="consultarAgendamentos()">🔍 Consultar
-            Agendamentos</button>
-        </div>
-
-      </div>
-      <div class="modal fade" id="modalAgendamentos" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content rounded shadow">
-
-            <!-- Cabeçalho -->
-            <div class="modal-header bg-primary text-white">
-              <h5 class="modal-title">Visualizar Agendamentos</h5>
-              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <!-- Corpo -->
-            <div class="modal-body">
-
-              <!-- Filtros -->
-              <div class="row mb-4">
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Responsáveis</option>
-                    <option>João</option>
-                    <option>Maria</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Bloco</option>
-                    <option>A</option>
-                    <option>B</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Sala</option>
-                    <option>C4</option>
-                    <option>G15</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <select class="form-control">
-                    <option>Período</option>
-                    <option>Manhã</option>
-                    <option>Noite</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Grid de cards -->
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <div class="card text-center shadow-sm h-100">
-                    <div class="card-body">
-                      <i class="fa fa-door-closed" style="font-size:2rem; color:#0d2e6d;"></i>
-                      <h6 class="mt-2">SALA C4</h6>
-                      <p class="mb-1">TIPO: SALA DE AULA</p>
-                      <p class="mb-1">CAPACIDADE: 20</p>
-                      <p class="mb-1">BLOCO: C</p>
-                      <small class="text-secondary">AGENDADA EM 16/01/2023</small>
-                      <div class="mt-3">
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                        <button class="btn btn-danger btn-sm">Excluir</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                  <div class="card text-center shadow-sm h-100">
-                    <div class="card-body">
-                      <i class="fa fa-desktop" style="font-size:2rem; color:#0d2e6d;"></i>
-                      <h6 class="mt-2">SALA G15</h6>
-                      <p class="mb-1">TIPO: LABORATÓRIO</p>
-                      <p class="mb-1">CAPACIDADE: 25</p>
-                      <p class="mb-1">BLOCO: G</p>
-                      <small class="text-secondary">AGENDADA EM 06/07/2020</small>
-                      <div class="mt-3">
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                        <button class="btn btn-danger btn-sm">Excluir</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Paginação -->
-              <nav class="d-flex justify-content-center mt-4">
-                <ul class="pagination pagination-sm">
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                </ul>
-              </nav>
-            </div>
-
-            <!-- Rodapé -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-          </div>
+          <button class="btn btn-outline-info btn-lg btn-block" (click)="abrirModal('consultarAgendamentos')">
+            🔍 Consultar Agendamentos
+          </button>
         </div>
       </div>
 
-
-      <!-- Tabela -->
+      <!-- Últimos Agendamentos -->
       <h4 class="text-left mb-3">Últimos Agendamentos</h4>
       <div class="table-responsive">
         <table class="table table-bordered text-center tabela-custom">
@@ -495,48 +45,383 @@
             </tr>
           </thead>
           <tbody id="tabela-agendamentos">
-            <tr>
-              <td>SALA C10</td>
-              <td>12/08/2025</td>
-              <td>028.422.523-25</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>13/08/2025</td>
-              <td>030.535.242-43</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>14/08/2025</td>
-              <td>123.424.154-12</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>15/08/2025</td>
-              <td>124.145.524-55</td>
-            </tr>
-            <tr>
-              <td>SALA C10</td>
-              <td>17/08/2025</td>
-              <td>678.980.567-89</td>
+            <tr *ngFor="let item of [
+          {sala:'SALA C10', data:'12/08/2025', resp:'028.422.523-25'},
+          {sala:'SALA C10', data:'13/08/2025', resp:'030.535.242-43'},
+          {sala:'SALA C10', data:'14/08/2025', resp:'123.424.154-12'},
+          {sala:'SALA C10', data:'15/08/2025', resp:'124.145.524-55'},
+          {sala:'SALA C10', data:'17/08/2025', resp:'678.980.567-89'}
+        ]">
+              <td>{{ item.sala }}</td>
+              <td>{{ item.data }}</td>
+              <td>{{ item.resp }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </main>
-  </div>
+    </div>
 
-  <!-- Rodapé fora do container -->
-  <footer class="header-custom text-white text-center p-3">
-    &copy; 2025 Colégio Politécnico da UFSM
-  </footer>
+    <!-- =======================================
+     MODAL: CADASTRO DE SALAS
+======================================= -->
+    <div class="modal-backdrop fade show" *ngIf="modalAberto === 'cadastro'"></div>
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="modalAberto === 'cadastro'">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Cadastro de Salas</h5>
+            <button type="button" class="close text-white" (click)="fecharModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+          <form>
+            <div class="modal-body">
+              <div class="form-row mb-3">
+                <div class="form-group col-md-4">
+                  <label for="bloco">Bloco</label>
+                  <select id="bloco" class="form-control" [(ngModel)]="blocoSelecionado" (change)="atualizarSalas()"
+                    name="bloco">
+                    <option value="" disabled selected>Selecione</option>
+                    <option *ngFor="let bloco of (salasPorBloco | keyvalue)" [value]="bloco.key">{{ bloco.key }}
+                    </option>
+                  </select>
+                </div>
 
+                <div class="form-group col-md-4">
+                  <label for="sala">Sala</label>
+                  <select id="sala" class="form-control" [(ngModel)]="salaSelecionada" name="sala">
+                    <option *ngIf="salasDisponiveis.length === 0" disabled>Selecione o bloco primeiro</option>
+                    <option *ngFor="let sala of salasDisponiveis">{{ sala }}</option>
+                  </select>
+                </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+                <div class="form-group col-md-4">
+                  <label for="capacidade">Capacidade</label>
+                  <input type="number" class="form-control" id="capacidade" placeholder="Número de pessoas" min="0"
+                    max="30">
+                </div>
+              </div>
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+              <div class="form-group mb-3">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" class="form-control">
+                  <option selected disabled>Selecione</option>
+                  <option>Laboratório</option>
+                  <option>Sala de aula</option>
+                </select>
+              </div>
 
-  <script src="JavaSript/index.js"></script>
-</body>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="cpfResponsavel">CPF do Responsável</label>
+                  <input type="text" class="form-control" id="cpfResponsavel" placeholder="000.000.000-00">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="nomeResponsavel">Nome do Responsável</label>
+                  <input type="text" class="form-control" id="nomeResponsavel" placeholder="Nome completo">
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" (click)="fecharModal()">Cancelar cadastro</button>
+              <button type="submit" class="btn btn-primary">Cadastrar sala</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+     MODAL: AGENDAMENTO DE SALAS
+======================================= -->
+    <div class="modal-backdrop fade show" *ngIf="modalAberto === 'agendamento'"></div>
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="modalAberto === 'agendamento'">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content custom-modal">
+          <div class="modal-header custom-header">
+            <h5 class="modal-title">AGENDAMENTO DE SALA</h5>
+            <button type="button" class="close custom-close" (click)="fecharModal()">
+              <span>&times;</span>
+            </button>
+          </div>
+
+          <form>
+            <div class="modal-body">
+              <div class="form-row mb-3">
+                <div class="form-group col-md-4">
+                  <label class="form-label font-weight-bold">BLOCO</label>
+                  <select id="blocoAgendamento" class="form-control custom-input" [(ngModel)]="blocoSelecionado"
+                    (change)="atualizarSalas()" name="blocoAgendamento">
+                    <option value="" disabled selected>Selecione</option>
+                    <option *ngFor="let bloco of (salasPorBloco | keyvalue)" [value]="bloco.key">{{ bloco.key }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label class="form-label font-weight-bold">SALA</label>
+                  <select id="salaAgendamento" class="form-control custom-input" [(ngModel)]="salaSelecionada"
+                    name="salaAgendamento">
+                    <option *ngIf="salasDisponiveis.length === 0" disabled>Selecione o bloco primeiro</option>
+                    <option *ngFor="let sala of salasDisponiveis">{{ sala }}</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label class="form-label font-weight-bold">TIPO</label>
+                  <select id="tipoAgendamento" class="form-control custom-input">
+                    <option selected disabled></option>
+                    <option>Laboratório</option>
+                    <option>Sala de aula</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="form-group col-md-6">
+                  <label class="form-label font-weight-bold">DATA INICIAL</label>
+                  <input type="date" class="form-control custom-input" id="dataInicialAgendamento">
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label font-weight-bold">DATA FINAL</label>
+                  <input type="date" class="form-control custom-input" id="dataFinalAgendamento">
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="form-group col-md-6">
+                  <label class="form-label font-weight-bold">DIA DA SEMANA</label>
+                  <select id="diaSemanaAgendamento" class="form-control custom-input">
+                    <option selected disabled></option>
+                    <option>Segunda-feira</option>
+                    <option>Terça-feira</option>
+                    <option>Quarta-feira</option>
+                    <option>Quinta-feira</option>
+                    <option>Sexta-feira</option>
+                    <option>Sábado</option>
+                    <option>Domingo</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label class="form-label font-weight-bold">HORA INICIAL</label>
+                  <input type="time" class="form-control custom-input" id="horaInicialAgendamento">
+                </div>
+                <div class="form-group col-md-3">
+                  <label class="form-label font-weight-bold">HORA FINAL</label>
+                  <input type="time" class="form-control custom-input" id="horaFinalAgendamento">
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="form-group col-md-6">
+                  <label class="form-label font-weight-bold">CPF DO RESPONSÁVEL</label>
+                  <input type="text" class="form-control custom-input" id="cpfAgendamento">
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label font-weight-bold">NOME DO RESPONSÁVEL</label>
+                  <input type="text" class="form-control custom-input" id="nomeAgendamento">
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-link text-muted" (click)="fecharModal()">Cancelar
+                agendamento</button>
+              <button type="submit" class="btn custom-btn">Agendar sala</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+     MODAL: CONSULTAR CADASTROS
+======================================= -->
+    <div class="modal-backdrop fade show" *ngIf="modalAberto === 'consultarCadastros'"></div>
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="modalAberto === 'consultarCadastros'">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Consultar Cadastros</h5>
+            <button type="button" class="close text-white" (click)="fecharModal()">
+              <span>&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-row mb-4">
+              <div class="form-group col-md-3">
+                <select class="form-control">
+                  <option selected>Responsáveis</option>
+                  <option>Cassal</option>
+                  <option>Henry</option>
+                  <option>Rosiclei</option>
+                  <option>Alan Turing</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-3">
+                <select id="blocoFiltro" class="form-control" [(ngModel)]="blocoSelecionado" (change)="atualizarSalas()"
+                  name="blocoFiltro">
+                  <option selected disabled>Selecione</option>
+                  <option *ngFor="let bloco of (salasPorBloco | keyvalue)" [value]="bloco.key">{{ bloco.key }}</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-3">
+                <select id="salaFiltro" class="form-control" [(ngModel)]="salaSelecionada" name="salaFiltro">
+                  <option *ngIf="salasDisponiveis.length === 0" disabled>Selecione o bloco primeiro</option>
+                  <option *ngFor="let sala of salasDisponiveis">{{ sala }}</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-3">
+                <select class="form-control">
+                  <option selected>Período</option>
+                  <option>Segunda</option>
+                  <option>Terça</option>
+                  <option>Quarta</option>
+                  <option>Quinta</option>
+                  <option>Sexta</option>
+                  <option>Sábado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card mb-3" *ngFor="let item of [
+          {nome:'SALA C4', tipo:'SALA DE AULA', cap:20, bloco:'C', data:'16/01/2023'},
+          {nome:'SALA G15', tipo:'LABORATÓRIO', cap:25, bloco:'G', data:'06/07/2020'}
+        ]">
+              <div class="card-body d-flex">
+                <div class="mr-3" style="width:80px; height:80px; background-color:#eee;"></div>
+                <div>
+                  <h6 class="mb-1">{{ item.nome }}</h6>
+                  <p class="mb-1">TIPO: {{ item.tipo }}</p>
+                  <p class="mb-1">CAPACIDADE: {{ item.cap }}</p>
+                  <p class="mb-1">BLOCO: {{ item.bloco }}</p>
+                  <p class="text-muted small mb-2">CADASTRADA NO DIA {{ item.data }}</p>
+                  <button class="btn btn-sm btn-primary mr-2">Editar</button>
+                  <button class="btn btn-sm btn-danger">Excluir</button>
+                </div>
+              </div>
+            </div>
+
+            <nav class="d-flex justify-content-center">
+              <ul class="pagination pagination-sm">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="fecharModal()">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+     MODAL: CONSULTAR AGENDAMENTOS
+======================================= -->
+    <div class="modal-backdrop fade show" *ngIf="modalAberto === 'consultarAgendamentos'"></div>
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="modalAberto === 'consultarAgendamentos'">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content rounded shadow">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Visualizar Agendamentos</h5>
+            <button type="button" class="close text-white" (click)="fecharModal()">
+              <span>&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="row mb-4">
+              <div class="col-md-3"><select class="form-control">
+                  <option>Responsáveis</option>
+                  <option>João</option>
+                  <option>Maria</option>
+                </select></div>
+              <div class="col-md-3"><select class="form-control">
+                  <option>Bloco</option>
+                  <option>A</option>
+                  <option>B</option>
+                </select></div>
+              <div class="col-md-3"><select class="form-control">
+                  <option>Sala</option>
+                  <option>C4</option>
+                  <option>G15</option>
+                </select></div>
+              <div class="col-md-3"><select class="form-control">
+                  <option>Período</option>
+                  <option>Manhã</option>
+                  <option>Noite</option>
+                </select></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3" *ngFor="let sala of [
+            {icone:'door-closed', nome:'SALA C4', tipo:'SALA DE AULA', cap:20, bloco:'C', data:'16/01/2023'},
+            {icone:'desktop', nome:'SALA G15', tipo:'LABORATÓRIO', cap:25, bloco:'G', data:'06/07/2020'}
+          ]">
+                <div class="card text-center shadow-sm h-100">
+                  <div class="card-body">
+                    <i class="fa fa-{{ sala.icone }}" style="font-size:2rem; color:#0d2e6d;"></i>
+                    <h6 class="mt-2">{{ sala.nome }}</h6>
+                    <p class="mb-1">TIPO: {{ sala.tipo }}</p>
+                    <p class="mb-1">CAPACIDADE: {{ sala.cap }}</p>
+                    <p class="mb-1">BLOCO: {{ sala.bloco }}</p>
+                    <small class="text-secondary">AGENDADA EM {{ sala.data }}</small>
+                    <div class="mt-3">
+                      <button class="btn btn-primary btn-sm">Editar</button>
+                      <button class="btn btn-danger btn-sm">Excluir</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paginação -->
+            <nav class="d-flex justify-content-center mt-4">
+              <ul class="pagination pagination-sm">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="fecharModal()">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Se achar no site-->
+    <div class="container px-0 mt-2 mb-4">
+      <div class="row">
+        <div class="col">
+          <p style="margin-bottom: 0;">
+            Você está aqui:
+            UFSM &gt;
+            <a href="#" style="color: blue; text-decoration: none;">Politécnico</a> &gt;
+            Agendamento e Salas
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container px-0">
+      <!-- Banner -->
+      <div class="banner"></div>
+      <!-- Conteúdo principal -->
+      <main class="my-5 text-center">
+
+      </main>
+    </div>
